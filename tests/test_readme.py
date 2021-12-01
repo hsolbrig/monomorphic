@@ -60,7 +60,7 @@ class ReadMeTestCase(unittest.TestCase):
         self.assertEqual("STRING: Hi there", brittle_library_function("Hi there"))
         with self.assertRaises(ValueError) as e:
             brittle_library_function(Rope("17 feet"))
-        self.assertEqual("I don't understand type <class 'test_readme.Rope'>", str(e.exception))
+        self.assertEqual("I don't understand type <class 'test_readme.Rope'>", str(e.exception).replace('tests.', ''))
 
 
 if __name__ == '__main__':
