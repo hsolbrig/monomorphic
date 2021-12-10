@@ -26,6 +26,8 @@ jobs:
       run: |
         rm -fr dist
         python setup.py bdist_wheel sdist
+        mkdir savedist
+        cp AUTHORS Changelog savedist
 
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@v1.2.2
@@ -39,6 +41,7 @@ jobs:
          ref: main
     - name: update it
       run: |
+        cp savedist/AUTHORS savedist/ChangeLog .
         git add AUTHORS ChangeLog
         if [[ ! -z $(git status -s AUTHORS ChangeLog) ]]
         then
