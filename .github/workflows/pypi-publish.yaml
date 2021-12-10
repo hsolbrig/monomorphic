@@ -27,7 +27,7 @@ jobs:
         rm -fr dist
         python setup.py bdist_wheel sdist
         mkdir savedist
-        cp AUTHORS Changelog savedist
+        cp AUTHORS ChangeLog savedist
 
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@v1.2.2
