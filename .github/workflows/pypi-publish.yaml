@@ -27,8 +27,15 @@ jobs:
         rm -fr dist
         python setup.py bdist_wheel sdist
 
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@v1.2.2
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_token }}
+
     - name: check in the updated AUTHORS and ChangeLog
       run: |
+        git checkout main
         git add AUTHORS ChangeLog
         if [[ ! -z $(git status -s AUTHORS ChangeLog) ]]
         then
@@ -37,9 +44,3 @@ jobs:
          git commit -m 'Update project metadata' AUTHORS ChangeLog
          git push
         fi
-
-    - name: Publish distribution 📦 to PyPI
-      uses: pypa/gh-action-pypi-publish@v1.2.2
-      with:
-        user: __token__
-        password: ${{ secrets.pypi_token }}
