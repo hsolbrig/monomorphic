@@ -34,8 +34,10 @@ jobs:
         password: ${{ secrets.pypi_token }}
 
     - name: check in the updated AUTHORS and ChangeLog
+      uses: actions/checkout@v2
+      with:
+         ref: main
       run: |
-        git checkout main
         git add AUTHORS ChangeLog
         if [[ ! -z $(git status -s AUTHORS ChangeLog) ]]
         then
