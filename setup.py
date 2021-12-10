@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 from setuptools import setup
 
-NAME = "monomorphic"
+# NAME = "monomorphic"
 setup(
-    name = NAME,
+#    name = NAME,
     setup_requires=['pbr'],
     pbr=True,
 )
