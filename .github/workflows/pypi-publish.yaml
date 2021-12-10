@@ -37,6 +37,7 @@ jobs:
       uses: actions/checkout@v2
       with:
          ref: main
+    - name: update it
       run: |
         git add AUTHORS ChangeLog
         if [[ ! -z $(git status -s AUTHORS ChangeLog) ]]
